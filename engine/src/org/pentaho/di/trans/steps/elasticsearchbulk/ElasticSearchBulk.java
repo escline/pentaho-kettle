@@ -272,7 +272,7 @@ public class ElasticSearchBulk extends BaseStep implements StepInterface {
       ValueMetaInterface valueMeta = rowMeta.getValueMeta( i );
       String name = hasFields ? columnsToJson.get( valueMeta.getName() ) : valueMeta.getName();
       Object value = row[i];
-      if ( StringUtils.isNotBlank( name ) ) {
+      if ( StringUtils.isNotBlank( name ) && value != null ) {
         if (rowMeta.getValueMeta(i).isString()) {
             jsonBuilder.field( name, rowMeta.getValueMeta(i).getString(value));
         } else if (rowMeta.getValueMeta(i).isDate()) {
